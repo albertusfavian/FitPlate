@@ -6,8 +6,7 @@ target 'FitPlate' do
   use_frameworks!
 
   # Pods for FitPlate
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'  # Jika Anda membutuhkan fitur otentikasi
-  pod 'Firebase/Firestore'  # Jika Anda membutuhkan database Firestore
-  pod 'Firebase/Storage'  # Jika Anda membutuhkan penyimpanan file Firebase
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+  
 end
