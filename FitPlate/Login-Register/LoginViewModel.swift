@@ -8,7 +8,7 @@
 
 import Foundation
 import SwiftUI
-import Firebase
+import FirebaseFirestore
 import FirebaseAuth
 
 class LoginViewModel: ObservableObject {
@@ -16,6 +16,7 @@ class LoginViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var isAdmin = false
+    @Published var isLoginSuccess = false
 
     private var db = Firestore.firestore()
     
@@ -23,10 +24,12 @@ class LoginViewModel: ObservableObject {
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if let error = error {
                 print("Error logging in: \(error)")
+                
                 completion(false)
             } else {
                 print("User logged in successfully!")
                 completion(true)
+                self.isLoginSuccess = true
             }
         }
     }

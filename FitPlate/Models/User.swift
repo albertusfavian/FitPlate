@@ -7,10 +7,10 @@
 
 
 import Foundation
-import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct User: Codable {
-    var id: String?
+    @DocumentID var id: String?
     var name: String
     var password: String
     var email: String

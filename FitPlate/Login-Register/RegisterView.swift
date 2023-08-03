@@ -7,13 +7,13 @@
 
 
 import SwiftUI
-import Firebase
-import FirebaseAuth
 
 struct RegisterView: View {
     @StateObject private var viewModel = RegisterViewModel()
     @State private var isPasswordSecured = true
     @State private var isConfirmPasswordSecured = true
+    @State private var isRegisterSuccess = false
+    @State private var isRegisterDone = false
 
     var body: some View {
         NavigationView{
@@ -116,8 +116,14 @@ struct RegisterView: View {
                         }
                     }
                     Spacer()
+                    NavigationLink(destination: MainTabConfig(), isActive: $isRegisterSuccess) {
+                        EmptyView()
+                    }
                     Button(action: {
-                        viewModel.register()
+                        viewModel.register {
+                            isRegisterDone = true
+                        }
+                        
                     }) {
                         Text("Register")
                     }
@@ -127,13 +133,25 @@ struct RegisterView: View {
                     .foregroundColor(.white)
                     .cornerRadius(10.0)
                     .padding(.bottom, 15)
+                    .alert(isPresented: $isRegisterDone) {
+                        Alert(title: Text(viewModel.titleMessage),
+                              message: Text(viewModel.callbackMessage),
+                              dismissButton: .default(Text("OK"),
+                                                      action: {
+                            if viewModel.titleMessage == "Success" {
+                                isRegisterSuccess = true
+                            } else if viewModel.titleMessage == "Failed" {
+                                isRegisterDone = false
+                            }
+                        }))
+                    }
                 }
                 .padding([.leading, .trailing], 27.5)
             }
             .navigationTitle("Register")
             .navigationBarTitleDisplayMode(.inline)
         }
-        
+        .navigationBarHidden(true)
     }
 }
 

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -29,6 +29,7 @@
 		2F88274E2A7A54A100947502 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88274D2A7A54A100947502 /* LoginView.swift */; };
 		2F8827502A7A557800947502 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88274F2A7A557800947502 /* LoginViewModel.swift */; };
 		306F488C604B8B7DCBA5398C /* Pods_FitPlate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A34002BE0CE742A78705CA9 /* Pods_FitPlate.framework */; };
+		8ED76F6E2A7B527E00ADB4DB /* PersonalRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F6D2A7B527E00ADB4DB /* PersonalRecipeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		2F88274D2A7A54A100947502 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2F88274F2A7A557800947502 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7A34002BE0CE742A78705CA9 /* Pods_FitPlate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitPlate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ED76F6D2A7B527E00ADB4DB /* PersonalRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRecipeView.swift; sourceTree = "<group>"; };
 		F75FC96A3BD2EE9E2F3AE8FA /* Pods-FitPlate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitPlate.debug.xcconfig"; path = "Target Support Files/Pods-FitPlate/Pods-FitPlate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				2F8827392A7A12FB00947502 /* ProfileTabItemView.swift */,
+				8ED76F6D2A7B527E00ADB4DB /* PersonalRecipeView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -220,7 +223,7 @@
 				};
 			};
 			buildConfigurationList = 2F39916B2A7A04FD0034A2A9 /* Build configuration list for PBXProject "FitPlate" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -298,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F88272C2A7A0C9000947502 /* MealTabItemView.swift in Sources */,
+				8ED76F6E2A7B527E00ADB4DB /* PersonalRecipeView.swift in Sources */,
 				2F88272A2A7A0C3600947502 /* MealTabItem.swift in Sources */,
 				2F8827462A7A473400947502 /* RegisterView.swift in Sources */,
 				2F88273F2A7A41AF00947502 /* SearchTabItemView.swift in Sources */,

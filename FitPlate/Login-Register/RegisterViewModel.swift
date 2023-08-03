@@ -9,7 +9,7 @@
 import Foundation
 import SwiftUI
 import FirebaseAuth
-import Firebase
+import FirebaseFirestore
 
 class RegisterViewModel: ObservableObject {
     
@@ -19,11 +19,25 @@ class RegisterViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var confirmPassword = ""
+    @Published var callbackMessage = ""
+    @Published var titleMessage = ""
     
     private var db = Firestore.firestore()
     
-    func register() {
-        
+    func register(completion: (() -> Void)? = nil) {
+        if isValidEmail(email){
+            authManager.registerUser(email: email, password: password, fullName: "Tono") { (result, error) in
+                if let error = error {
+                    self.titleMessage = "Failed"
+                    self.callbackMessage = error.localizedDescription
+                    completion?()
+                } else {
+                    self.titleMessage = "Success"
+                    self.callbackMessage = "Register Successfull, Welcome \(self.username)"
+                    completion?()
+                }
+            }
+        }
     }
     
     //TEMPLATE EMAIL FORMAT SO USERS SO THEY INSERT THE CORRECT FORMAT WHEN ENTERING THEIR EMAIL

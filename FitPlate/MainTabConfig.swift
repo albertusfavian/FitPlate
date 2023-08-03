@@ -33,6 +33,7 @@ struct MainTabConfig: View {
                 .tag(2)
         }
         .accentColor(Color(hex: "#91B898"))
+        .navigationBarHidden(true)
     }
 }
 

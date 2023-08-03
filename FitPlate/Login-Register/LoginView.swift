@@ -8,32 +8,29 @@
 
 import SwiftUI
 import FirebaseAuth
-import Firebase
 
 struct LoginView: View {
 
     @StateObject private var viewModel = LoginViewModel()
     @State var visible = false
-    @State private var isSecured : Bool=true
+    @State private var isSecured : Bool = true
+    @State var isLoginSuccess = false
+    @State var isLoginAdminSucces = false
 
     var authManager = AuthManager()
 
     var body: some View {
         NavigationView {
-            ZStack
-            {
+            ZStack{
                 Color(hex: "FFF9F0").edgesIgnoringSafeArea(.all)
                 VStack() {
-
                     VStack(alignment: .leading, spacing: 15) {
-                        
                         HStack{
                             Text("Email")
                             Text("*")
                                 .foregroundColor(Color(hex: "FE0200"))
                         }
-                            .font(.system(size: 16))
-                        
+                        .font(.system(size: 16))
                         TextField("", text: $viewModel.email)
                             .padding()
                             .background(
@@ -42,85 +39,57 @@ struct LoginView: View {
                             )
                             .autocapitalization(.none)
                             .disableAutocorrection(true)
-                        
                         HStack{
                             Text("Password")
                             Text("*")
                                 .foregroundColor(Color(hex: "FE0200"))
                         }
-                            .font(.system(size: 16))
+                        .font(.system(size: 16))
                         
-                        ZStack(alignment: .trailing)
-                        {
-                            Group{
-                                
-                                if isSecured
-                                {
-                                    SecureField("", text: $viewModel.password)
-                                        .padding()
-                                        .background(
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .stroke(Color(hex: "F0BB62"), lineWidth: 1)
-                                        )
-                                        .autocapitalization(.none)
-                                        .disableAutocorrection(true)
-                                    
-                                }
-                                else
-                                {
-                                    TextField("", text: $viewModel.password)
-                                        .padding()
-                                        .background(
-                                            RoundedRectangle(cornerRadius: 8)
-                                                .stroke(Color(hex: "F0BB62"), lineWidth: 1)
-                                        )
-                                        .autocapitalization(.none)
-                                        .disableAutocorrection(true)
-                                    
-                                }
-                                
+                        ZStack(alignment: .trailing) {
+                            if isSecured {
+                                SecureField("", text: $viewModel.password)
+                            } else {
+                                TextField("", text: $viewModel.password)
                             }
-                    Button(action: {
-                                    isSecured.toggle()
-                                }) {
-                                    Image(systemName: self.isSecured ? "eye.slash" : "eye")
-                                        .accentColor(.gray)
-                                }
+                            
+                            Button(action: {
+                                isSecured.toggle()
+                            }) {
+                                Image(systemName: isSecured ? "eye.slash" : "eye")
+                                    .accentColor(.gray)
+                            }
                         }
-                    
-                        HStack
-                        {
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 8)
+                                .stroke(Color(hex: "F0BB62"), lineWidth: 1)
+                        )
+                        .autocapitalization(.none)
+                        .disableAutocorrection(true)
+                        
+                        HStack{
                             Spacer()
-                            Button("Forgot Password?")
-                            {
+                            Button("Forgot Password?") {
                                 
                             }
                             .foregroundColor(Color(hex: "51925A"))
                             .padding()
                             .font(.system(size: 14))
-                                            
                         }
                         
-                        
-                        
-            Button(action: {
-                        viewModel.signIn { isAdmin in
-                            if isAdmin {
-                                // Navigate to AdminView
-                                NavigationLink(destination: EmptyView()) {
-                                    EmptyView()
-                                }
-                            } else {
-                                // Navigate to MealTabItemView
-                                NavigationLink(destination: MealTabItemView()) {
-                                    EmptyView()
+                        Button(action: {
+                            viewModel.signIn { isAdmin in
+                                if isAdmin {
+//                                    isLoginAdminSucces = true
+                                } else {
+                                    isLoginSuccess = true
                                 }
                             }
+                        }) {
+                            Text("Login")
+                                .padding()
                         }
-                    }) {
-                        Text("Sign in")
-                            .padding()
-                    }
                         .frame(maxWidth: .infinity)
                         .background(Color(hex: "519259"))
                         .foregroundColor(.white)
@@ -131,23 +100,30 @@ struct LoginView: View {
                             .font(.system(size: 14))
                             .frame(maxWidth: .infinity, alignment: .center)
                         
-                        NavigationLink(destination: RegisterView())
-                        {
+                        NavigationLink(destination: RegisterView()){
                             Text("Create Account")
                                 .frame(maxWidth: .infinity, alignment:.center)
                                 .font(.system(size:15))
                                 .foregroundColor(Color(hex: "51925A"))
                         }
-                        
                         Spacer()
+                        
+//                        Navigate To MainTabConfig
+                        NavigationLink(destination: MainTabConfig(), isActive: $isLoginSuccess) {
+                            EmptyView()
+                        }
+//                        Navigate To Admin Side
+//                        NavigationLink(destination: EmptyView(), isActive: $isLoginAdminSucces) {
+//                            EmptyView()
+//                        }
                     }
+                    .navigationTitle("Login")
+                    .navigationBarTitleDisplayMode(.inline)
                     .padding([.leading, .trailing], 27.5)
                 }
             }
         }
-        
     }
-
 }
 
 struct LoginView_Previews: PreviewProvider {
