@@ -71,7 +71,7 @@ struct LoginView: View {
                         HStack{
                             Spacer()
                             Button("Forgot Password?") {
-                                
+//                                Action
                             }
                             .foregroundColor(Color(hex: "51925A"))
                             .padding()

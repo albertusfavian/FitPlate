@@ -45,31 +45,33 @@ struct ProfileTabItemView: View {
                             Text("Password")
                         }
                         Section(header: Text("Others").font(.headline).textCase(.none)) {
-                            HStack{
-                                Text("Recipe's Name")
-                                    .padding(.leading, 32)
-                                    .overlay(
-                                        Image(systemName: "magnifyingglass")
-                                            .foregroundColor(.gray)
+                            NavigationLink(destination: PersonalRecipeView()) {
+                                HStack{
+                                    Text("Recipe's Name")
+                                        .padding(.leading, 32)
+                                        .overlay(
+                                            Image(systemName: "magnifyingglass")
+                                                .foregroundColor(.gray)
 
-                                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading),
-                                        alignment: .leading
-                                        )
-                                Spacer()
-                                Image(systemName: "chevron.right")
+                                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading),
+                                            alignment: .leading
+                                            )
+                                    Spacer()
+                                }
                             }
-                            HStack{
-                                Text("Grocery List")
-                                    .padding(.leading, 32)
-                                    .overlay(
-                                        Image(systemName: "cart")
-                                            .foregroundColor(Color(hex: "#F0BB62"))
+                            NavigationLink(destination: EmptyView()) {
+                                HStack{
+                                    Text("Grocery List")
+                                        .padding(.leading, 32)
+                                        .overlay(
+                                            Image(systemName: "cart")
+                                                .foregroundColor(Color(hex: "#F0BB62"))
 
-                                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading),
-                                        alignment: .leading
-                                        )
-                                Spacer()
-                                Image(systemName: "chevron.right")
+                                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading),
+                                            alignment: .leading
+                                            )
+                                    Spacer()
+                                }
                             }
 
                         }
@@ -78,9 +80,6 @@ struct ProfileTabItemView: View {
                         print("button pressed")
                     }
                     .padding(16)
-
-
-
                 }
 
             }

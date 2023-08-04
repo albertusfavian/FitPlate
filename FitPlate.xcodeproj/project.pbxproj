@@ -30,6 +30,13 @@
 		2F8827502A7A557800947502 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F88274F2A7A557800947502 /* LoginViewModel.swift */; };
 		306F488C604B8B7DCBA5398C /* Pods_FitPlate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A34002BE0CE742A78705CA9 /* Pods_FitPlate.framework */; };
 		8ED76F6E2A7B527E00ADB4DB /* PersonalRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F6D2A7B527E00ADB4DB /* PersonalRecipeView.swift */; };
+		8ED76F702A7C0DE400ADB4DB /* PersonalRecipeItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F6F2A7C0DE400ADB4DB /* PersonalRecipeItemViewModel.swift */; };
+		8ED76F722A7C138E00ADB4DB /* Meal+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F712A7C138E00ADB4DB /* Meal+Extension.swift */; };
+		8ED76F742A7CB7C100ADB4DB /* RecipeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F732A7CB7C100ADB4DB /* RecipeDetailView.swift */; };
+		8ED76F762A7CB7DB00ADB4DB /* RecipeDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F752A7CB7DB00ADB4DB /* RecipeDetailViewModel.swift */; };
+		8ED76F792A7CB9D100ADB4DB /* AddRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F782A7CB9D100ADB4DB /* AddRecipeView.swift */; };
+		8ED76F7C2A7CBC0100ADB4DB /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F7B2A7CBC0100ADB4DB /* AppColor.swift */; };
+		8ED76F7E2A7D58E700ADB4DB /* AddRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F7D2A7D58E700ADB4DB /* AddRecipeViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +65,13 @@
 		2F88274F2A7A557800947502 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		7A34002BE0CE742A78705CA9 /* Pods_FitPlate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FitPlate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ED76F6D2A7B527E00ADB4DB /* PersonalRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRecipeView.swift; sourceTree = "<group>"; };
+		8ED76F6F2A7C0DE400ADB4DB /* PersonalRecipeItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRecipeItemViewModel.swift; sourceTree = "<group>"; };
+		8ED76F712A7C138E00ADB4DB /* Meal+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meal+Extension.swift"; sourceTree = "<group>"; };
+		8ED76F732A7CB7C100ADB4DB /* RecipeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailView.swift; sourceTree = "<group>"; };
+		8ED76F752A7CB7DB00ADB4DB /* RecipeDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewModel.swift; sourceTree = "<group>"; };
+		8ED76F782A7CB9D100ADB4DB /* AddRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeView.swift; sourceTree = "<group>"; };
+		8ED76F7B2A7CBC0100ADB4DB /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
+		8ED76F7D2A7D58E700ADB4DB /* AddRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeViewModel.swift; sourceTree = "<group>"; };
 		F75FC96A3BD2EE9E2F3AE8FA /* Pods-FitPlate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitPlate.debug.xcconfig"; path = "Target Support Files/Pods-FitPlate/Pods-FitPlate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +108,8 @@
 		2F3991722A7A04FD0034A2A9 /* FitPlate */ = {
 			isa = PBXGroup;
 			children = (
+				8ED76F7A2A7CBBF700ADB4DB /* Shared */,
+				8ED76F772A7CB9C200ADB4DB /* Recipe */,
 				2F8827442A7A470F00947502 /* Login-Register */,
 				2F88273D2A7A401200947502 /* Search */,
 				2F8827382A7A12E400947502 /* Profile */,
@@ -134,6 +150,7 @@
 			children = (
 				2F8827322A7A0D5B00947502 /* Meal.swift */,
 				2F88274B2A7A47D300947502 /* User.swift */,
+				8ED76F712A7C138E00ADB4DB /* Meal+Extension.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -143,6 +160,9 @@
 			children = (
 				2F8827392A7A12FB00947502 /* ProfileTabItemView.swift */,
 				8ED76F6D2A7B527E00ADB4DB /* PersonalRecipeView.swift */,
+				8ED76F6F2A7C0DE400ADB4DB /* PersonalRecipeItemViewModel.swift */,
+				8ED76F732A7CB7C100ADB4DB /* RecipeDetailView.swift */,
+				8ED76F752A7CB7DB00ADB4DB /* RecipeDetailViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -175,6 +195,23 @@
 				1EB6C0B75E716547A101A3EA /* Pods-FitPlate.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8ED76F772A7CB9C200ADB4DB /* Recipe */ = {
+			isa = PBXGroup;
+			children = (
+				8ED76F782A7CB9D100ADB4DB /* AddRecipeView.swift */,
+				8ED76F7D2A7D58E700ADB4DB /* AddRecipeViewModel.swift */,
+			);
+			path = Recipe;
+			sourceTree = "<group>";
+		};
+		8ED76F7A2A7CBBF700ADB4DB /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				8ED76F7B2A7CBC0100ADB4DB /* AppColor.swift */,
+			);
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		D1780A36E5278E46688D67DD /* Frameworks */ = {
@@ -302,23 +339,30 @@
 			files = (
 				2F88272C2A7A0C9000947502 /* MealTabItemView.swift in Sources */,
 				8ED76F6E2A7B527E00ADB4DB /* PersonalRecipeView.swift in Sources */,
+				8ED76F792A7CB9D100ADB4DB /* AddRecipeView.swift in Sources */,
 				2F88272A2A7A0C3600947502 /* MealTabItem.swift in Sources */,
+				8ED76F7E2A7D58E700ADB4DB /* AddRecipeViewModel.swift in Sources */,
 				2F8827462A7A473400947502 /* RegisterView.swift in Sources */,
 				2F88273F2A7A41AF00947502 /* SearchTabItemView.swift in Sources */,
 				2F88274C2A7A47D300947502 /* User.swift in Sources */,
+				8ED76F762A7CB7DB00ADB4DB /* RecipeDetailViewModel.swift in Sources */,
 				2F88274A2A7A47A500947502 /* AuthManager.swift in Sources */,
+				8ED76F742A7CB7C100ADB4DB /* RecipeDetailView.swift in Sources */,
 				2F8827412A7A41E100947502 /* SearchTabItemViewModel.swift in Sources */,
 				2F88273C2A7A132A00947502 /* ButtonView.swift in Sources */,
 				2F8827502A7A557800947502 /* LoginViewModel.swift in Sources */,
 				2F3991762A7A04FD0034A2A9 /* ContentView.swift in Sources */,
 				2F3991742A7A04FD0034A2A9 /* FitPlateApp.swift in Sources */,
 				2F88274E2A7A54A100947502 /* LoginView.swift in Sources */,
+				8ED76F7C2A7CBC0100ADB4DB /* AppColor.swift in Sources */,
 				2F8827352A7A0DBD00947502 /* MainTabConfig.swift in Sources */,
 				2F8827482A7A477700947502 /* RegisterViewModel.swift in Sources */,
 				2F8827372A7A10EF00947502 /* Color.swift in Sources */,
 				2F8827332A7A0D5B00947502 /* Meal.swift in Sources */,
+				8ED76F722A7C138E00ADB4DB /* Meal+Extension.swift in Sources */,
 				2F8827302A7A0D1C00947502 /* MealViewModel.swift in Sources */,
 				2F88273A2A7A12FB00947502 /* ProfileTabItemView.swift in Sources */,
+				8ED76F702A7C0DE400ADB4DB /* PersonalRecipeItemViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +489,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FitPlate/Preview Content\"";
@@ -475,6 +520,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FitPlate/Preview Content\"";

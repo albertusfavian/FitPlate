@@ -12,24 +12,19 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class LoginViewModel: ObservableObject {
+    let authManager = AuthManager()
     
     @Published var email = ""
     @Published var password = ""
     @Published var isAdmin = false
     @Published var isLoginSuccess = false
-
-    private var db = Firestore.firestore()
     
     func signIn(completion: @escaping (Bool) -> Void) {
-        Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
-            if let error = error {
-                print("Error logging in: \(error)")
-                
-                completion(false)
-            } else {
-                print("User logged in successfully!")
-                completion(true)
+        authManager.signIn(email: email, password: password) { error, isSuccess in
+            if isSuccess {
                 self.isLoginSuccess = true
+            } else {
+                print("Error when Sign In\(error?.localizedDescription)")
             }
         }
     }
