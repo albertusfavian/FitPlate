@@ -9,39 +9,68 @@ import SwiftUI
 
 struct AddRecipeView: View {
     @StateObject private var viewModel = AddRecipeViewModel()
+    @State private var showImagePicker = false
+    @State private var isSelectSourceType = false
+    
+    @State private var tempIngredientsName: String = ""
+    @State private var tempIngredientsQuan: String = ""
     
     var body: some View {
         VStack{
             VStack(spacing: 8){
-                Image(systemName: "circle.fill")
-                    .resizable()
-                    .frame(width: 150, height: 150)
+                if let image = viewModel.selectedImage {
+                    Image(uiImage: image)
+                        .resizable()
+                        .frame(width: 150, height: 150)
+                        .clipShape(Circle())
+                        .scaledToFit()
+                } else {
+                    Image(systemName: "circle.fill")
+                        .resizable()
+                        .frame(width: 150, height: 150)
+                }
                 Button {
-                    //
+                    self.isSelectSourceType = true
                 } label: {
                     Text("+ Add Image")
                         .font(.callout)
                         .foregroundColor(AppColor.primaryText)
                 }
+                .alert(isPresented: $isSelectSourceType) {
+                    Alert(title: Text("Select Source of Photo"),
+                          message: Text("Choose one of 2 option Below"),
+                          primaryButton: .default(Text("Camera"),
+                                                  action: {
+                        viewModel.selectedSourceType = .camera
+                        self.showImagePicker.toggle()
+                    }),
+                          secondaryButton: .default(Text("Photo Library"),
+                                                    action: {
+                        viewModel.selectedSourceType = .photoLibrary
+                        self.showImagePicker.toggle()
+                    }))
+                }
+                .sheet(isPresented: $showImagePicker) {
+                    ImagePicker(image: self.$viewModel.selectedImage, sourceType: viewModel.selectedSourceType ?? .photoLibrary)
+                }
             }
             ScrollView{
                 VStack{
-                    Group{
-                        VStack{
-                            HStack{
-                                Text("Name")
-                                Spacer()
-                            }
-                            .font(.headline)
-                            TextField("", text: $viewModel.mealName)
-                                .padding(.all, 8)
-                                .background(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(Color.black, lineWidth: 1)
-                                )
-                                .autocapitalization(.none)
-                                .disableAutocorrection(true)
+                    VStack{
+                        HStack{
+                            Text("Name")
+                            Spacer()
                         }
+                        .font(.headline)
+                        TextField("", text: $viewModel.mealName)
+                            .padding(.all, 8)
+                            .background(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color.black, lineWidth: 1)
+                            )
+                            .autocapitalization(.none)
+                            .disableAutocorrection(true)
+                    
                         HStack{
                             VStack{
                                 HStack{
@@ -50,7 +79,7 @@ struct AddRecipeView: View {
                                 }
                                 .font(.headline)
                                 HStack{
-                                    Picker("Select an option", selection: $viewModel.selectedOption) {
+                                    Picker("Select an option", selection: $viewModel.selectedTimeOptions) {
                                         ForEach(viewModel.timeOptions, id: \.self) { index in
                                             Text("\(index)")
                                                 .tag(index)
@@ -104,18 +133,29 @@ struct AddRecipeView: View {
                                 Text("Bahan (Minimal 1)")
                                 Spacer()
                                 Button {
-        //                            Action
+                                    viewModel.ingredients.append(Ingredient(ingredientsName: "", ingredientsQuantity: ""))
                                 } label: {
                                     Image(systemName: "plus")
                                         .foregroundColor(Color.black)
                                 }
                             }
                             .font(.headline)
-                            ForEach(viewModel.ingredients, id: \.self) { ingredient in
-                                HStack{
-                                    Text(ingredient.ingredientsName)
-                                    Spacer()
-                                    Text(ingredient.ingredientsQuantity)
+                            ForEach(viewModel.ingredients.indices, id: \.self) { index in
+                                var ingredient = viewModel.ingredients[index]
+                                
+                                if ingredient.ingredientsName == "" || ingredient.ingredientsQuantity == "" {
+                                    HStack{
+                                        TextField("", text: $viewModel.ingredients[index].ingredientsName)
+                                        Spacer()
+                                        TextField("", text: $viewModel.ingredients[index].ingredientsQuantity)
+                                            .multilineTextAlignment(.trailing)
+                                    }
+                                } else {
+                                    HStack{
+                                        Text(ingredient.ingredientsName)
+                                        Spacer()
+                                        Text(ingredient.ingredientsQuantity)
+                                    }
                                 }
                                 Divider()
                             }

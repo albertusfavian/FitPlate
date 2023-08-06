@@ -37,6 +37,7 @@
 		8ED76F792A7CB9D100ADB4DB /* AddRecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F782A7CB9D100ADB4DB /* AddRecipeView.swift */; };
 		8ED76F7C2A7CBC0100ADB4DB /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F7B2A7CBC0100ADB4DB /* AppColor.swift */; };
 		8ED76F7E2A7D58E700ADB4DB /* AddRecipeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F7D2A7D58E700ADB4DB /* AddRecipeViewModel.swift */; };
+		8ED76F812A7F969200ADB4DB /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ED76F802A7F969200ADB4DB /* ImagePickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,8 @@
 		8ED76F782A7CB9D100ADB4DB /* AddRecipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeView.swift; sourceTree = "<group>"; };
 		8ED76F7B2A7CBC0100ADB4DB /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		8ED76F7D2A7D58E700ADB4DB /* AddRecipeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipeViewModel.swift; sourceTree = "<group>"; };
+		8ED76F7F2A7F956900ADB4DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8ED76F802A7F969200ADB4DB /* ImagePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		F75FC96A3BD2EE9E2F3AE8FA /* Pods-FitPlate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitPlate.debug.xcconfig"; path = "Target Support Files/Pods-FitPlate/Pods-FitPlate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +111,7 @@
 		2F3991722A7A04FD0034A2A9 /* FitPlate */ = {
 			isa = PBXGroup;
 			children = (
+				8ED76F7F2A7F956900ADB4DB /* Info.plist */,
 				8ED76F7A2A7CBBF700ADB4DB /* Shared */,
 				8ED76F772A7CB9C200ADB4DB /* Recipe */,
 				2F8827442A7A470F00947502 /* Login-Register */,
@@ -210,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				8ED76F7B2A7CBC0100ADB4DB /* AppColor.swift */,
+				8ED76F802A7F969200ADB4DB /* ImagePickerView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 				2F8827482A7A477700947502 /* RegisterViewModel.swift in Sources */,
 				2F8827372A7A10EF00947502 /* Color.swift in Sources */,
 				2F8827332A7A0D5B00947502 /* Meal.swift in Sources */,
+				8ED76F812A7F969200ADB4DB /* ImagePickerView.swift in Sources */,
 				8ED76F722A7C138E00ADB4DB /* Meal+Extension.swift in Sources */,
 				2F8827302A7A0D1C00947502 /* MealViewModel.swift in Sources */,
 				2F88273A2A7A12FB00947502 /* ProfileTabItemView.swift in Sources */,
@@ -496,6 +502,7 @@
 				DEVELOPMENT_TEAM = DFYL38U338;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FitPlate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -527,6 +534,7 @@
 				DEVELOPMENT_TEAM = DFYL38U338;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = FitPlate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

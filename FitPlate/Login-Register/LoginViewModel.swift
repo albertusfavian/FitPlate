@@ -23,6 +23,7 @@ class LoginViewModel: ObservableObject {
         authManager.signIn(email: email, password: password) { error, isSuccess in
             if isSuccess {
                 self.isLoginSuccess = true
+                completion(false)
             } else {
                 print("Error when Sign In\(error?.localizedDescription)")
             }

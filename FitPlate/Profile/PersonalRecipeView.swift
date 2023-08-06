@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct PersonalRecipeView: View {
+    @State private var isAddRecipeActive = false
     @State private var searchBarText = ""
     @ObservedObject private var viewModel = PersonalRecipeViewModel()
 
@@ -52,6 +53,9 @@ struct PersonalRecipeView: View {
 //                    }
 //                }
 //            }
+            NavigationLink(destination: AddRecipeView(), isActive: $isAddRecipeActive) {
+                EmptyView()
+            }
             
             List{
                 ForEach(viewModel.meals, id: \.mealName) { meal in
@@ -70,7 +74,7 @@ struct PersonalRecipeView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
-                        // Action
+                        isAddRecipeActive = true
                     }) {
                         Image(systemName: "plus")
                             .foregroundColor(Color.green)
