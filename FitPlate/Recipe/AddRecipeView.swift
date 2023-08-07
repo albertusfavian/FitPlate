@@ -11,6 +11,10 @@ struct AddRecipeView: View {
     @StateObject private var viewModel = AddRecipeViewModel()
     @State private var showImagePicker = false
     @State private var isSelectSourceType = false
+    @State private var isFinishAddRecipe = false
+    @State private var isClosedAddRecipe = false
+    
+    @State private var editMode = EditMode.inactive
     
     @State private var tempIngredientsName: String = ""
     @State private var tempIngredientsQuan: String = ""
@@ -141,112 +145,157 @@ struct AddRecipeView: View {
                             }
                             .font(.headline)
                             ForEach(viewModel.ingredients.indices, id: \.self) { index in
-                                var ingredient = viewModel.ingredients[index]
-                                
-                                if ingredient.ingredientsName == "" || ingredient.ingredientsQuantity == "" {
-                                    HStack{
-                                        TextField("", text: $viewModel.ingredients[index].ingredientsName)
+                                let ingredient = $viewModel.ingredients[index]
+
+                                HStack {
+                                    if index == viewModel.ingredients.count - 1 {
+                                        TextField("", text: ingredient.ingredientsName)
+                                            .onChange(of: ingredient.ingredientsName) { newValue in
+                                                // Handle changes to ingredient name
+                                            }
+                                            .disableAutocorrection(true)
                                         Spacer()
-                                        TextField("", text: $viewModel.ingredients[index].ingredientsQuantity)
+                                        TextField("", text: ingredient.ingredientsQuantity)
                                             .multilineTextAlignment(.trailing)
+                                            .onChange(of: ingredient.ingredientsQuantity) { newValue in
+                                                // Handle changes to ingredient quantity
+                                            }
+                                            .disableAutocorrection(true)
+                                    } else {
+                                        if ingredient.ingredientsName == "" || ingredient.ingredientsQuantity == "" {
+                                            TextField("", text: ingredient.ingredientsName)
+                                                .onChange(of: ingredient.ingredientsName) { newValue in
+                                                    // Handle changes to ingredient name
+                                                }
+                                                .disableAutocorrection(true)
+                                            Spacer()
+                                            TextField("", text: ingredient.ingredientsQuantity)
+                                                .multilineTextAlignment(.trailing)
+                                                .onChange(of: ingredient.ingredientsQuantity) { newValue in
+                                                    // Handle changes to ingredient quantity
+                                                }
+                                                .disableAutocorrection(true)
+                                        } else {
+                                            Text(ingredient.ingredientsName)
+                                            Spacer()
+                                            Text(ingredient.ingredientsQuantity)
+                                        }
                                     }
-                                } else {
-                                    HStack{
-                                        Text(ingredient.ingredientsName)
-                                        Spacer()
-                                        Text(ingredient.ingredientsQuantity)
+                                }
+                                Divider()
+                                .swipeActions(edge: .trailing) {
+                                    Button("Edit") {
+                                        // Handle edit action here
+                                        if index == viewModel.ingredients.count - 1 {
+                                            // Handle edit for new ingredient
+                                        } else {
+                                            // Handle edit for existing ingredient
+                                        }
                                     }
                                 }
-                                Divider()
                             }
                         }
-                        VStack(spacing: 8){
-                            HStack{
-                                Text("Bahan Lainnya")
-                                Spacer()
-                                Button {
-        //                            Action
-                                } label: {
-                                    Image(systemName: "plus")
-                                        .foregroundColor(Color.black)
-                                }
-                            }
-                            .font(.headline)
-                            ForEach(viewModel.ingredients, id: \.self) { ingredient in
-                                HStack{
-                                    Text(ingredient.ingredientsName)
-                                    Spacer()
-                                }
-                                Divider()
-                            }
-                        }
-                        VStack(spacing: 8){
-                            HStack{
-                                Text("Peralatan (Minimal 1)")
-                                Spacer()
-                                Button {
-        //                            Action
-                                } label: {
-                                    Image(systemName: "plus")
-                                        .foregroundColor(Color.black)
-                                }
-                            }
-                            .font(.headline)
-                            ForEach(viewModel.utensils, id: \.self) { utensil in
-                                HStack{
-                                    Text(utensil)
-                                    Spacer()
-                                }
-                                Divider()
-                            }
-                        }
+//                        VStack(spacing: 8){
+//                            HStack{
+//                                Text("Bahan Lainnya")
+//                                Spacer()
+//                                Button {
+//        //                            Action
+//                                } label: {
+//                                    Image(systemName: "plus")
+//                                        .foregroundColor(Color.black)
+//                                }
+//                            }
+//                            .font(.headline)
+//                            ForEach(viewModel.ingredients, id: \.self) { ingredient in
+//                                HStack{
+//                                    Text(ingredient.ingredientsName)
+//                                    Spacer()
+//                                }
+//                                Divider()
+//                            }
+//                        }
+//                        VStack(spacing: 8){
+//                            HStack{
+//                                Text("Peralatan (Minimal 1)")
+//                                Spacer()
+//                                Button {
+//        //                            Action
+//                                } label: {
+//                                    Image(systemName: "plus")
+//                                        .foregroundColor(Color.black)
+//                                }
+//                            }
+//                            .font(.headline)
+//                            ForEach(viewModel.utensils, id: \.self) { utensil in
+//                                HStack{
+//                                    Text(utensil)
+//                                    Spacer()
+//                                }
+//                                Divider()
+//                            }
+//                        }
                     }
-                    VStack(spacing: 8){
-                        VStack(spacing: 8){
-                            HStack{
-                                Text("Cara Memasak")
-                                Spacer()
-                                Button {
-        //                            Action
-                                } label: {
-                                    Image(systemName: "plus")
-                                        .foregroundColor(Color.black)
-                                }
-                            }
-                            .font(.headline)
-                            ForEach(viewModel.stepsCooking, id: \.self) { step in
-                                HStack{
-                                    Text(step)
-                                    Spacer()
-                                }
-                                Divider()
-                            }
-                        }
-                        VStack(spacing: 8){
-                            HStack{
-                                Text("Nutrition Info")
-                                Spacer()
-                                Button {
-        //                            Action
-                                } label: {
-                                    Image(systemName: "plus")
-                                        .foregroundColor(Color.black)
-                                }
-                            }
-                            .font(.headline)
-                            ForEach(viewModel.nutritionInfo, id: \.self) { nutrition in
-                                HStack{
-                                    Text(nutrition.nutritionName)
-                                    Spacer()
-                                    Text(nutrition.nutritionRate)
-                                }
-                                Divider()
-                            }
-                        }
+//                    VStack(spacing: 8){
+//                        VStack(spacing: 8){
+//                            HStack{
+//                                Text("Cara Memasak")
+//                                Spacer()
+//                                Button {
+//        //                            Action
+//                                } label: {
+//                                    Image(systemName: "plus")
+//                                        .foregroundColor(Color.black)
+//                                }
+//                            }
+//                            .font(.headline)
+//                            ForEach(viewModel.stepsCooking, id: \.self) { step in
+//                                HStack{
+//                                    Text(step)
+//                                    Spacer()
+//                                }
+//                                Divider()
+//                            }
+//                        }
+//                        VStack(spacing: 8){
+//                            HStack{
+//                                Text("Nutrition Info")
+//                                Spacer()
+//                                Button {
+//        //                            Action
+//                                } label: {
+//                                    Image(systemName: "plus")
+//                                        .foregroundColor(Color.black)
+//                                }
+//                            }
+//                            .font(.headline)
+//                            ForEach(viewModel.nutritionInfo, id: \.self) { nutrition in
+//                                HStack{
+//                                    Text(nutrition.nutritionName)
+//                                    Spacer()
+//                                    Text(nutrition.nutritionRate)
+//                                }
+//                                Divider()
+//                            }
+//                        }
+//                    }
+                    
+                    ButtonView(title: "Save") {
+                        isFinishAddRecipe = true
                     }
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 16)
                 }
                 .padding()
                 .navigationTitle(Text("Add Personal Recipe"))
+                .alert(isPresented: $isFinishAddRecipe, content: {
+                    Alert(title: Text("Saved"),
+                          message: Text("Recipe Added Successfully"),
+                          dismissButton: .default(Text("OK"),
+                                                  action: {
+                        isClosedAddRecipe = true
+                    }))
+                })
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button(action: {

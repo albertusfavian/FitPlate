@@ -131,7 +131,12 @@ struct MealTabItemView: View {
                 }
                 .padding(16)
                 Spacer()
-                
+                VStack{
+                    Image("Icon")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: geo.size.width * 0.4, height: geo.size.width * 0.4)
+                }
             }
         }.frame(width: geo.size.width, height: geo.size.height * 0.3)
         
